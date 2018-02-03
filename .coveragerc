@@ -1,0 +1,12 @@
+[run]
+  include = ./*
+  branch = True
+omit =
+  *__init__.py
+  *apps.py,
+  *migrations/*,
+  *settings*,
+  *tests/*,
+  *urls.py,
+  *wsgi.py,
+  manage.py
