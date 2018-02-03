@@ -1,5 +1,7 @@
 from django.test import TestCase
 
+from datetime import date
+
 from django_todolist.core.models import Task
 
 
@@ -23,3 +25,6 @@ class TaskModelTest(TestCase):
 
     def test_text_cant_be_null(self):
         self.assertFalse(self.text_field.null)
+
+    def test_created_at(self):
+        self.assertEqual(date.today(), self.task.created_at)
