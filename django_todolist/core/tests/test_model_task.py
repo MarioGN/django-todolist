@@ -28,3 +28,6 @@ class TaskModelTest(TestCase):
 
     def test_created_at(self):
         self.assertEqual(date.today(), self.task.created_at)
+
+    def test_completed(self):
+        self.assertFalse(self.task.completed)
