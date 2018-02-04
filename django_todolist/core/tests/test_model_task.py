@@ -42,3 +42,8 @@ class TaskModelTest(TestCase):
         self.assertFalse(self.task.completed)
         self.task.complete()
         self.assertTrue(self.task.completed)
+
+    def test_delete_task(self):
+        self.assertTrue(self.task.active)
+        self.task.delete_task()
+        self.assertFalse(self.task.active)

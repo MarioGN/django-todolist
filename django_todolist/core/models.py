@@ -11,7 +11,7 @@ class Task(models.Model):
         self.completed = True
         self.save()
 
-    def delete(self):
+    def delete_task(self):
         self.active = False
         self.save()
 
