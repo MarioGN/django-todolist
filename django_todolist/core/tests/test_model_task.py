@@ -32,6 +32,9 @@ class TaskModelTest(TestCase):
     def test_completed(self):
         self.assertFalse(self.task.completed)
 
+    def test_active(self):
+        self.assertTrue(self.task.active)
+
     def test_str(self):
         self.assertEqual(self.task.text, str(self.task))
 
