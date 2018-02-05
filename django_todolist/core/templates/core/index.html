@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>Index</h1>
-    <ul>
-      {% for task in task_list %}
-        <li>{{ task }}</li>
-      {% empty %}
+{% extends "base.html" %}
+
+{% block content %}
+  <ul>
+    {% for task in task_list %}
+      <li>{{ task }}</li>
+    {% empty %}
       <h4>No tasks found!</h4>
-      {% endfor %}
-    </ul>
-  </body>
-</html>
+    {% endfor %}
+  </ul>
+{% endblock %}
