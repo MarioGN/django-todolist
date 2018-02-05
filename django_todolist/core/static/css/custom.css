@@ -1,0 +1,17 @@
+/*BASE*/
+body {
+  background-color: #333;
+}
+
+
+/*Header*/
+.navbar-brand {
+  font-size: 2em;
+  font-family: 'Indie Flower', cursive;
+}
+
+/*Task*/
+.task-description {
+  font-size: 1.2em;
+  font-family: 'Indie Flower', cursive;
+}
