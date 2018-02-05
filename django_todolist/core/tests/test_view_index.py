@@ -21,3 +21,8 @@ class IndexViewGet(TestCase):
     def test_has_context_list(self):
         context_list = self.resp.context['task_list']
         self.assertIsInstance(context_list, QuerySet)
+
+    def test_list_filter_active(self):
+        task_list = Task.objects.filter(active=True)
+        context_list = self.resp.context['task_list']
+        self.assertEqual(list(task_list), list(context_list))
