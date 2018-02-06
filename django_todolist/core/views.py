@@ -4,10 +4,12 @@ from .models import Task
 
 
 def index(request, filter='current'):
+    task_list = []
+    template_name = 'core/index.html'
 
     if filter == 'current':
         task_list = Task.objects.filter(active=True).filter(completed=False)
-
-    template_name = 'core/index.html'
+    elif filter == 'completed':
+        task_list = Task.objects.filter(active=True).filter(completed=True)
 
     return render(request, template_name, {'task_list': task_list})

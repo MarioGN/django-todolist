@@ -35,9 +35,10 @@
             aria-disabled="true">
             Current <span class="badge badge-light">4</span>
           </a>
-          <button type="button" class="btn btn-outline-info">
-            Completed <span class="badge badge-light">3</span>
-          </button>
+          <a href="{% url 'core:index_filter' filter='completed'%}" class="btn btn-outline-info" role="button"
+            aria-disabled="true">
+            Completed <span class="badge badge-light">4</span>
+          </a>
           <button type="button" class="btn btn-outline-info">
             All <span class="badge badge-light">7</span>
           </button>
