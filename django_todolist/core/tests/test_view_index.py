@@ -70,3 +70,8 @@ class IndexViewFilters(TestCase):
     def test_count_completed_list(self):
         completed_count = self.resp_completed.context['completed_count']
         self.assertEqual(len(self.completed_tasks), completed_count)
+
+    def test_count_all(self):
+        resp = self.client.get(r('core:index_filter', filter='all'))
+        all_count = resp.context['all_count']
+        self.assertEqual(len(Task.objects.all()), all_count)
