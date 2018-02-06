@@ -33,17 +33,20 @@
     <main class="container">
       <div class="my-3 p-3 bg-white rounded box-shadow">
         <div class="btn-group" role="group" aria-label="Basic example">
-          <a href="{% url 'core:index_filter' filter='current'%}" class="btn btn-outline-info active" role="button"
-            aria-disabled="true">
-            Current <span class="badge badge-light">4</span>
+          <a href="{% url 'core:index_filter' filter='current'%}"
+              class="btn btn-outline-info {% if active_button == 'current'  %} active {% endif %}"
+              role="button" aria-disabled="true">
+              Current <span class="badge badge-light">4</span>
           </a>
-          <a href="{% url 'core:index_filter' filter='completed'%}" class="btn btn-outline-info" role="button"
-            aria-disabled="true">
+          <a href="{% url 'core:index_filter' filter='completed'%}"
+            class="btn btn-outline-info {% if active_button == 'completed'  %} active {% endif %}"
+            role="button" aria-disabled="true">
             Completed <span class="badge badge-light">4</span>
           </a>
-          <a href="{% url 'core:index_filter' filter='all'%}" class="btn btn-outline-info" role="button"
-            aria-disabled="true">
-            All <span class="badge badge-light">4</span>
+          <a href="{% url 'core:index_filter' filter='all'%}"
+              class="btn btn-outline-info {% if active_button == 'all'  %} active {% endif %}"
+              role="button" aria-disabled="true">
+              All <span class="badge badge-light">4</span>
           </a>
         </div>
       {% block content %}
