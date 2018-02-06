@@ -5,5 +5,6 @@ from . import views
 app_name = 'core'
 
 urlpatterns = [
-    path('(?P<filter>[\w\-]+)', views.index, name='index'),
+    path('', views.index, name='index'),
+    path('<str:filter>/', views.index, name='index_filter'),
 ]
