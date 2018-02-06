@@ -44,13 +44,13 @@ class IndexViewFilters(TestCase):
         )
         # deleted
         mommy.make('core.Task', active=False, _quantity=2)
+        self.rest_index = self.client.get(r('core:index_filter', filter='current'))
 
     def tearDown(self):
         Task.objects.all().delete()
 
     def test_index_list(self):
-        resp = self.client.get(r('core:index'))
-        context_list = resp.context['task_list']
+        context_list = self.rest_index.context['task_list']
         self.assertEqual(len(context_list), len(self.open_tasks))
 
     def test_index_filter_completed(self):
@@ -64,6 +64,5 @@ class IndexViewFilters(TestCase):
         self.assertEqual(len(context_list), len(Task.objects.all()))
 
     def test__count_current_list(self):
-        resp = self.client.get(r('core:index'))
-        current_count = resp.context['current_count']
+        current_count = self.rest_index.context['current_count']
         self.assertEqual(len(self.open_tasks), current_count)
