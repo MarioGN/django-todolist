@@ -22,7 +22,9 @@
       <div class="navbar-collapse justify-content-md-center">
         <ul class="navbar-nav">
           <li>
-            <a class="navbar-brand" href="#">My To Do List</a>
+            <a class="navbar-brand" href="{% url 'core:index' %}">
+              My To Do List
+            </a>
           </li>
         </ul>
       </div>
@@ -39,9 +41,10 @@
             aria-disabled="true">
             Completed <span class="badge badge-light">4</span>
           </a>
-          <button type="button" class="btn btn-outline-info">
-            All <span class="badge badge-light">7</span>
-          </button>
+          <a href="{% url 'core:index_filter' filter='all'%}" class="btn btn-outline-info" role="button"
+            aria-disabled="true">
+            All <span class="badge badge-light">4</span>
+          </a>
         </div>
       {% block content %}
       {% endblock %}
