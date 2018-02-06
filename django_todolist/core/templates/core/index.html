@@ -13,10 +13,13 @@
           {% else %}
             <span class="badge badge-info">Open</span>
           {% endif %}
-          <a class="badge badge-warning text-white" href="#" data-toggle="modal" data-target="#modalEditTask">
-            Edit
-            <i class="material-icons" style="font-size: 0.9em">mode_edit</i>
-          </a>
+
+          {% if not task.completed %}
+            <a class="badge badge-warning text-white" href="#" data-toggle="modal" data-target="#modalEditTask">
+              Edit
+              <i class="material-icons" style="font-size: 0.9em">mode_edit</i>
+            </a>
+          {% endif %}
         </strong>
         <p class="task-description">
           {{ task }}
