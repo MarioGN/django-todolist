@@ -29,6 +29,18 @@
     </nav>
     <!-- end header -->
     <main class="container">
+      <div class="my-3 p-3 bg-white rounded box-shadow">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-outline-info active">
+            Current <span class="badge badge-light">4</span>
+          </button>
+          <button type="button" class="btn btn-outline-info">
+            Completed <span class="badge badge-light">3</span>
+          </button>
+          <button type="button" class="btn btn-outline-info">
+            All <span class="badge badge-light">7</span>
+          </button>
+        </div>
       {% block content %}
       {% endblock %}
     </main>

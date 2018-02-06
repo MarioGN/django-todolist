@@ -30,6 +30,6 @@ class IndexViewGet(TestCase):
         context_list = self.resp.context['task_list']
         self.assertIsInstance(context_list, QuerySet)
 
-    def test_list_filter_active(self):
+    def test_list_filter_active_completed(self):
         context_list = self.resp.context['task_list']
         self.assertEqual(6, context_list.count())
