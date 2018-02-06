@@ -62,3 +62,8 @@ class IndexViewFilters(TestCase):
         resp = self.client.get(r('core:index_filter', filter='all'))
         context_list = resp.context['task_list']
         self.assertEqual(len(context_list), len(Task.objects.all()))
+
+    def test__count_current_list(self):
+        resp = self.client.get(r('core:index'))
+        current_count = resp.context['current_count']
+        self.assertEqual(len(self.open_tasks), current_count)
