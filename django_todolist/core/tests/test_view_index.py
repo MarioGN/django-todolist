@@ -57,3 +57,8 @@ class IndexViewFilters(TestCase):
         resp = self.client.get(r('core:index_filter', filter='completed'))
         context_list = resp.context['task_list']
         self.assertEqual(len(context_list), len(self.completed_tasks))
+
+    def test_index_filter_all(self):
+        resp = self.client.get(r('core:index_filter', filter='all'))
+        context_list = resp.context['task_list']
+        self.assertEqual(len(context_list), len(Task.objects.all()))
