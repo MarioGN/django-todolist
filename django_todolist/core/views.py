@@ -13,6 +13,7 @@ def index(request, filter='current'):
     form = TaskForm(request.POST or None)
     if form.is_valid():
         form.save()
+        form = TaskForm()
 
     template_name = 'core/index.html'
 

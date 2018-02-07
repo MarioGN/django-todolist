@@ -33,12 +33,19 @@
     <main class="container">
       <div class="p-3 my-3 text-white-50 bg-light rounded box-shadow border border-primary">
         <form method="post">
-            {% csrf_token %}
+          {% csrf_token %}
 
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">
-                Add
-            </button>
+          <div class="form-row align-items-center">
+            <div class="col-sm-8 offset-sm-1">
+              {{ form.text }}
+            </div>
+
+            <div class="col-sm-2">
+              <button type="submit" class="btn btn-outline-primary btn-block">
+                  Add
+              </button>
+            </div>
+          </div>
         </form>
       </div>
 
