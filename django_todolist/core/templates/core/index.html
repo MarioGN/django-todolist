@@ -10,6 +10,8 @@
         <strong class="d-block">
           {% if task.completed %}
             <span class="badge badge-success">Done</span>
+          {% elif not task.active %}
+            <span class="badge badge-secondary">Canceled / Deleted</span>
           {% else %}
             <span class="badge badge-info">Open</span>
           {% endif %}
