@@ -14,7 +14,7 @@
             <span class="badge badge-info">Open</span>
           {% endif %}
 
-          {% if not task.completed %}
+          {% if not task.completed and task.active %}
             <a class="badge badge-warning text-white" href="#" data-toggle="modal" data-target="#modalEditTask">
               Edit
               <i class="material-icons" style="font-size: 0.9em">mode_edit</i>
