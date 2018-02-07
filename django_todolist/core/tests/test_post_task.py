@@ -17,3 +17,13 @@ class PostTaskForm(TestCase):
     def test_post_create_index(self):
         self.client.post(r('core:index'), self.data)
         self.assertEqual(self.count+1, Task.objects.all().count())
+
+    def test_post_create_index_filter(self):
+        self.client.post(r('core:index_filter', filter='current'), self.data)
+        self.assertEqual(self.count+1, Task.objects.all().count())
+
+        self.client.post(r('core:index_filter', filter='completed'), self.data)
+        self.assertEqual(self.count+2, Task.objects.all().count())
+
+        self.client.post(r('core:index_filter', filter='all'), self.data)
+        self.assertEqual(self.count+3, Task.objects.all().count())
