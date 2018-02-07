@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Task
 from .forms import TaskForm
@@ -34,6 +34,14 @@ def index(request, filter='current'):
     }
 
     return render(request, template_name, context)
+
+
+def delete_task(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    task.active = False
+    task.save()
+
+    redirect('index')
 
 
 def get_context_list(filter):
