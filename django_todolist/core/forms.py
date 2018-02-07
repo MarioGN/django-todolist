@@ -3,7 +3,8 @@ from django import forms
 from .models import Task
 
 
-class TaskForm(models.ModelForm):
+class TaskForm(forms.ModelForm):
 
-    model = Task
-    fields = ('text',)
+    class Meta:
+        model = Task
+        fields = ('text',)
