@@ -27,7 +27,8 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-2" style="margin-bottom: 10px">
-      <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#modalCompleteTask">
+      <button type="button" class="btn btn-success"  {% if not task.active or task.completed %}disabled{% endif %}
+        data-toggle="modal" data-target="#modalCompleteTask">
           <i class="material-icons">done</i>
       </button>
       <button type="button" class="btn btn-outline-danger" {% if not task.active %} disabled {% endif %}
