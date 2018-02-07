@@ -31,6 +31,18 @@
     </nav>
     <!-- end header -->
     <main class="container">
+      <div class="p-3 my-3 text-white-50 bg-light rounded box-shadow border border-primary">
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">
+                Add
+            </button>
+        </form>
+      </div>
+
+
       <div class="my-3 p-3 bg-white rounded box-shadow">
         <div class="btn-group" role="group" aria-label="Basic example">
           <a href="{% url 'core:index_filter' filter='current'%}"

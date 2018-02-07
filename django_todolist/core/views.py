@@ -11,7 +11,7 @@ def index(request, filter='current'):
         raise Http404
 
     form = TaskForm(request.POST or None)
-    if form.is_valid:
+    if form.is_valid():
         form.save()
 
     template_name = 'core/index.html'
