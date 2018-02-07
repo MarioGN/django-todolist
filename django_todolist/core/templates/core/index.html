@@ -26,11 +26,12 @@
         </p>
       </div>
     </div>
-    <div class="col-xs-12 col-smt-2" style="margin-bottom: 10px">
+    <div class="col-xs-12 col-sm-2" style="margin-bottom: 10px">
       <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#modalCompleteTask">
           <i class="material-icons">done</i>
       </button>
-      <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modalDeleteTask">
+      <button type="button" class="btn btn-outline-danger" {% if not task.active %} disabled {% endif %}
+          data-toggle="modal" data-target="#modalDeleteTask">
           <i class="material-icons">delete_forever</i>
       </button>
     </div>

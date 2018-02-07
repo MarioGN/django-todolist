@@ -9,7 +9,6 @@ def index(request, filter='current'):
     if not filter_is_valid(filter):
         raise Http404
 
-    task_list = []
     template_name = 'core/index.html'
 
     current_count = get_context_list(filter='current').count()
