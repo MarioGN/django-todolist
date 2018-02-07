@@ -14,13 +14,13 @@ def index(request, filter='current'):
     all_count = Task.objects.all().count()
 
     if filter == 'current':
-        task_list = Task.objects.filter(active=True).filter(completed=False)
+        task_list = get_context_list(filter)
     elif filter == 'completed':
         active_button = 'completed'
-        task_list = Task.objects.filter(active=True).filter(completed=True)
+        task_list = get_context_list(filter)
     elif filter == 'all':
         active_button = 'all'
-        task_list = Task.objects.all()
+        task_list = get_context_list(filter)
     else:
         raise Http404
 
@@ -33,3 +33,17 @@ def index(request, filter='current'):
     }
 
     return render(request, template_name, context)
+
+
+def get_context_list(filter):
+
+    task_list = None
+
+    if filter == 'current':
+        task_list = Task.objects.filter(active=True).filter(completed=False)
+    elif filter == 'completed':
+        task_list = Task.objects.filter(active=True).filter(completed=True)
+    elif filter == 'all':
+        task_list = Task.objects.all()
+
+    return task_list
