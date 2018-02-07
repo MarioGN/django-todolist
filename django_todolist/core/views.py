@@ -2,12 +2,17 @@ from django.http import Http404
 from django.shortcuts import render
 
 from .models import Task
+from .forms import TaskForm
 
 
 def index(request, filter='current'):
 
     if not filter_is_valid(filter):
         raise Http404
+
+    form = TaskForm(request.POST or None)
+    if form.is_valid:
+        form.save()
 
     template_name = 'core/index.html'
 
@@ -24,6 +29,7 @@ def index(request, filter='current'):
         'current_count': current_count,
         'completed_count': completed_count,
         'all_count': all_count,
+        'form': form,
     }
 
     return render(request, template_name, context)
