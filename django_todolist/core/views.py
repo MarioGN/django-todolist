@@ -44,6 +44,14 @@ def delete_task(request, pk):
     return redirect('core:index')
 
 
+def complete_task(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    task.completed = True
+    task.save()
+
+    return redirect('core:index')
+
+
 def get_context_list(filter):
 
     task_list = None
