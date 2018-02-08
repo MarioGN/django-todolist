@@ -4,7 +4,7 @@ from django.shortcuts import resolve_url as r
 from django_todolist.core.models import Task
 
 
-class DeleteViewGet(TestCase):
+class CompleteViewGet(TestCase):
 
     def setUp(self):
         self.task = Task.objects.create(text='My new task')
@@ -12,7 +12,7 @@ class DeleteViewGet(TestCase):
     def tearDown(self):
         Task.objects.all().delete()
 
-    def test_delete_view(self):
-        count = Task.objects.filter(active=False).count()
-        self.client.get(r('core:delete', pk=self.task.pk))
-        self.assertTrue(count+1, Task.objects.filter(active=False).count())
+    def test_complete_view(self):
+        count = Task.objects.filter(completed=True).count()
+        self.client.get(r('core:complete', pk=self.task.pk))
+        self.assertTrue(count+1, Task.objects.filter(completed=True).count())
