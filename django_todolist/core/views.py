@@ -41,7 +41,7 @@ def delete_task(request, pk):
     task.active = False
     task.save()
 
-    redirect('index')
+    return redirect('core:index')
 
 
 def get_context_list(filter):
