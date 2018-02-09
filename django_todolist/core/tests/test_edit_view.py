@@ -10,8 +10,7 @@ class EditTaskViewPost(TestCase):
     def setUp(self):
         self.task = Task.objects.create(text='My new task')
         self.new_text = "New description."
-
-        self.data = dict(id_field=self.task.id, text=self.new_text)
+        self.data = dict(id_field=self.task.pk, text=self.new_text)
 
     def tearDown(self):
         Task.objects.all().delete()

@@ -42,8 +42,8 @@ def index(request, filter='current'):
 def edit(request):
     form = TaskEditForm(request.POST or None)
     if form.is_valid():
-        task = get_object_or_404(Task, pk=form['id_field'])
-        task.text = form['text']
+        task = get_object_or_404(Task, pk=form.cleaned_data['id_field'])
+        task.text = form.cleaned_data['text']
         task.save()
 
     return redirect('core:index')
