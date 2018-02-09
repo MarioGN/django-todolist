@@ -2,7 +2,7 @@ from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Task
-from .forms import TaskForm
+from .forms import TaskForm, TaskEditForm
 
 
 def index(request, filter='current'):
@@ -14,6 +14,8 @@ def index(request, filter='current'):
     if form.is_valid():
         form.save()
         form = TaskForm()
+
+    edit_form = TaskEditForm()
 
     template_name = 'core/index.html'
 
@@ -31,9 +33,20 @@ def index(request, filter='current'):
         'completed_count': completed_count,
         'all_count': all_count,
         'form': form,
+        'edit_form': edit_form,
     }
 
     return render(request, template_name, context)
+
+
+def edit(request):
+    form = TaskEditForm(request.POST or None)
+    if form.is_valid():
+        task = get_object_or_404(Task, pk=form['id_field'])
+        task.text = form['text']
+        task.save()
+
+    return redirect('core:index')
 
 
 def delete_task(request, pk, filter='current'):
