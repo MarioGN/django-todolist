@@ -14,5 +14,5 @@ class DeleteViewGet(TestCase):
 
     def test_delete_view(self):
         count = Task.objects.filter(active=False).count()
-        self.client.get(r('core:delete', pk=self.task.pk))
+        self.client.get(r('core:delete', pk=self.task.pk, filter='current'))
         self.assertTrue(count+1, Task.objects.filter(active=False).count())
