@@ -116,6 +116,35 @@
         </div>
     </div>
 
+    <!-- Modal Edit Task -->
+    <div class="modal fade" id="modalEditTask" tabindex="-1" role="dialog" aria-labelledby="modalEditTask" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title" id="modalEditTask">Edit Task</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                 </button>
+               </div>
+               <form method="post" action="/edit/">
+                   <div class="modal-body">
+                       {% csrf_token %}
+                        <div class="form-group">
+                            {{ edit_form.id_field }}
+                            <label for="txtEditTask">Description</label>
+                            {{ edit_form.text }}
+                        </div>
+                   </div>
+
+                   <div class="modal-footer">
+                     <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                   </div>
+               </form>
+            </div>
+        </div>
+    </div>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -123,10 +152,8 @@
 
     <script type="text/javascript">
       $('#modalDeleteTask').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget);
+          var button = $(event.relatedTarget)
           var task = button.data('task')
-
-          console.log(task)
 
           var modal = $(this)
           modal.find('a').attr("href", task)
@@ -134,13 +161,23 @@
       })
 
       $('#modalCompleteTask').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget);
+          var button = $(event.relatedTarget)
           var task = button.data('task')
-
-          console.log(task)
 
           var modal = $(this)
           modal.find('a').attr("href", task)
+
+      })
+
+      $('#modalEditTask').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget)
+          var id = button.data('id')
+          var text = button.data('text')
+
+
+          var modal = $(this)
+          modal.find('#id_id_field').attr("value", id)
+          modal.find('#id_text').html(text)
 
       })
     </script>

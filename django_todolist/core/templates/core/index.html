@@ -17,7 +17,8 @@
           {% endif %}
 
           {% if not task.completed and task.active %}
-            <a class="badge badge-warning text-white" href="#" data-toggle="modal" data-target="#modalEditTask">
+            <a class="badge badge-warning text-white" href="#" data-toggle="modal" data-target="#modalEditTask"
+              data-id="{{ task.id }}" data-text="{{ task.text }}">
               Edit
               <i class="material-icons" style="font-size: 0.9em">mode_edit</i>
             </a>
