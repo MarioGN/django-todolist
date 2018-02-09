@@ -36,12 +36,12 @@ def index(request, filter='current'):
     return render(request, template_name, context)
 
 
-def delete_task(request, pk):
+def delete_task(request, pk, filter='current'):
     task = get_object_or_404(Task, pk=pk)
     task.active = False
     task.save()
 
-    return redirect('core:index')
+    return redirect('core:index_filter', filter=filter)
 
 
 def complete_task(request, pk):

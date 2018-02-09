@@ -35,7 +35,7 @@
       </button>
 
       <button type="button" class="btn btn-outline-danger" {% if not task.active %} disabled {% endif %}
-          data-toggle="modal" data-target="#modalDeleteTask" data-task="{% url 'core:delete' pk=task.pk %}">
+          data-toggle="modal" data-target="#modalDeleteTask" data-task="{% url 'core:delete' pk=task.pk filter=active_button %}">
           <i class="material-icons">delete_forever</i>
       </a>
 
