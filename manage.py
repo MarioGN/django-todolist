@@ -18,7 +18,14 @@ if __name__ == "__main__":
     # config converage
     if is_testing:
         import coverage
-        cov = coverage.coverage(source=['django_todolist.core',], omit=['*/tests/*'])
+        
+        source = ['django_todolist.core',]
+        omit = [
+            '*/tests/*', '*__init__.py', '*apps.py', '*migrations/*', 
+            '*settings*', '*tests/*', '*urls.py', '*wsgi.py'
+        ]
+
+        cov = coverage.coverage(source=source, omit=omit)
         cov.set_option('report:show_missing', True)
         cov.erase()
         cov.start()
