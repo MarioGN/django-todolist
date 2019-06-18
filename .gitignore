@@ -67,3 +67,4 @@ media/
 staticfiles
 .env
 covhtml/
+.vscode/
