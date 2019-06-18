@@ -66,3 +66,4 @@ db.sqlite3
 media/
 staticfiles
 .env
+covhtml/

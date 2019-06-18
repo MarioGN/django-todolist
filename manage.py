@@ -12,4 +12,28 @@ if __name__ == "__main__":
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+
+    is_testing = 'test' in sys.argv
+
+    # config converage
+    if is_testing:
+        import coverage
+        
+        source = ['django_todolist.core',]
+        omit = [
+            '*/tests/*', '*__init__.py', '*apps.py', '*migrations/*', 
+            '*settings*', '*tests/*', '*urls.py', '*wsgi.py'
+        ]
+
+        cov = coverage.coverage(source=source, omit=omit)
+        cov.set_option('report:show_missing', True)
+        cov.erase()
+        cov.start()
+    
     execute_from_command_line(sys.argv)
+
+    if is_testing:
+        cov.stop()
+        cov.save()
+        cov.html_report(directory='covhtml')
+        cov.report()

@@ -48,6 +48,9 @@ class IndexViewFilters(TestCase):
         self.resp_completed = self.client.get(r('core:index_filter', filter='completed'))
         self.resp_all = self.client.get(r('core:index_filter', filter='all'))
 
+        self.filter = 'invalid_filter'
+        self.resp_invalid_filter = self.client.get(r'core:index_filter', filter=filter)
+
     def tearDown(self):
         Task.objects.all().delete()
 
@@ -74,3 +77,17 @@ class IndexViewFilters(TestCase):
     def test_count_all(self):
         all_count = self.resp_all.context['all_count']
         self.assertEqual(len(Task.objects.all()), all_count)
+
+    def test_invalid_filter(self):
+        from django_todolist.core.views import filter_is_valid
+
+        self.assertEqual('invalid_filter', self.filter)
+        self.assertEqual(False, filter_is_valid(self.resp_invalid_filter))
+        self.assertEqual(404, self.resp_invalid_filter.status_code)
+
+    def test_context_list_filter(self):
+        from django_todolist.core.views import get_context_list
+        
+        filter = 'all'
+        resp_list =  get_context_list('all')
+        self.assertNotEquals(None, resp_list)
